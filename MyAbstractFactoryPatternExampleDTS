@@ -1,0 +1,202 @@
+package com.company.DTS;
+
+import com.company.DTS.TeamAndroid.AndroidTeamFactory;
+
+public class AndroidMinecraftVersion {
+    public static void main(String[] args) {
+    PlatformTeamFactory teamFactoryAndroid = new AndroidTeamFactory();
+    Developer androidDeveloper = teamFactoryAndroid.getDeveloper();
+    CreatorMods androidModer = teamFactoryAndroid.getCreatorMods();
+    Tester androidTester = teamFactoryAndroid.getTester();
+
+    androidDeveloper.writeCode();
+    androidModer.writeMode();
+    androidTester.doingTest();
+
+    }
+}
+
+-----------------------------------------------------------------------------------------------
+
+package com.company.DTS;
+
+import com.company.DTS.TeamIOS.IOSTeamFactory;
+
+public class IOSMinecraftVersion {
+    public static void main(String[] args) {
+    PlatformTeamFactory teamFactoryIOS = new IOSTeamFactory();
+    Developer developerIOS = teamFactoryIOS.getDeveloper();
+    CreatorMods moderIOS = teamFactoryIOS.getCreatorMods();
+    Tester testerIOS = teamFactoryIOS.getTester();
+
+    developerIOS.writeCode();
+    moderIOS.writeMode();
+    testerIOS.doingTest();
+    }
+}
+
+-----------------------------------------------------------------------------------------------
+
+package com.company.DTS;
+
+public interface CreatorMods {
+    void writeMode();
+}
+
+-----------------------------------------------------------------------------------------------
+
+package com.company.DTS;
+
+public interface Developer {
+    void writeCode();
+}
+
+-----------------------------------------------------------------------------------------------
+
+package com.company.DTS;
+
+public interface Tester {
+    void doingTest();
+}
+
+-----------------------------------------------------------------------------------------------
+
+package com.company.DTS;
+
+public interface PlatformTeamFactory {
+    Developer getDeveloper();
+    CreatorMods getCreatorMods();
+    Tester getTester();
+
+}
+
+-----------------------------------------------------------------------------------------------
+
+package com.company.DTS.TeamAndroid;
+
+import com.company.DTS.Developer;
+
+public class AndroidDeveloper implements Developer {
+    @Override
+    public void writeCode() {
+        System.out.println("Я пишу код игры Minecraft на (ОС: Android)...");
+    }
+}
+
+-----------------------------------------------------------------------------------------------
+
+package com.company.DTS.TeamAndroid;
+
+import com.company.DTS.CreatorMods;
+
+public class AndroidCreatorMods implements CreatorMods {
+    @Override
+    public void writeMode() {
+        System.out.println("Я создаю различные моды для игры Minecraft на (ОС: Android)...");
+    }
+}
+
+-----------------------------------------------------------------------------------------------
+
+package com.company.DTS.TeamAndroid;
+
+import com.company.DTS.Tester;
+
+public class AndroidTester implements Tester {
+    @Override
+    public void doingTest() {
+        System.out.println("Я тестирую игру Minecraft на (ОС: Android)...");
+    }
+}
+
+-----------------------------------------------------------------------------------------------
+
+package com.company.DTS.TeamAndroid;
+
+import com.company.DTS.CreatorMods;
+import com.company.DTS.Developer;
+import com.company.DTS.PlatformTeamFactory;
+import com.company.DTS.Tester;
+
+public class AndroidTeamFactory implements PlatformTeamFactory {
+    @Override
+    public Developer getDeveloper() {
+        return new AndroidDeveloper();
+    }
+
+    @Override
+    public CreatorMods getCreatorMods() {
+        return new AndroidCreatorMods();
+    }
+
+    @Override
+    public Tester getTester() {
+        return new AndroidTester();
+    }
+}
+
+-----------------------------------------------------------------------------------------------
+
+package com.company.DTS.TeamIOS;
+
+import com.company.DTS.Developer;
+
+public class IOSDeveloper implements Developer {
+    @Override
+    public void writeCode() {
+        System.out.println("Я пишу код игры Minecraft на (ОС: IOS)...");
+    }
+}
+
+-----------------------------------------------------------------------------------------------
+
+package com.company.DTS.TeamIOS;
+
+import com.company.DTS.CreatorMods;
+
+public class IOSCreatorMods implements CreatorMods {
+    @Override
+    public void writeMode() {
+        System.out.println("Я создаю различные моды для игры Minecraft на (ОС: IOS)...");
+    }
+}
+
+-----------------------------------------------------------------------------------------------
+
+package com.company.DTS.TeamIOS;
+
+import com.company.DTS.Tester;
+
+public class IOSTester implements Tester {
+    @Override
+    public void doingTest() {
+        System.out.println("Я тестирую игру Minecraft на (ОС: IOS)...");
+
+    }
+}
+
+-----------------------------------------------------------------------------------------------
+
+package com.company.DTS.TeamIOS;
+
+import com.company.DTS.CreatorMods;
+import com.company.DTS.Developer;
+import com.company.DTS.PlatformTeamFactory;
+import com.company.DTS.Tester;
+
+public class IOSTeamFactory implements PlatformTeamFactory {
+    @Override
+    public Developer getDeveloper() {
+        return new IOSDeveloper();
+    }
+
+    @Override
+    public CreatorMods getCreatorMods() {
+        return new IOSCreatorMods();
+    }
+
+    @Override
+    public Tester getTester() {
+        return new IOSTester();
+    }
+}
